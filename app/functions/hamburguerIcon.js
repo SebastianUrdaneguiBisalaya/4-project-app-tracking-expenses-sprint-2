@@ -1,11 +1,8 @@
 export default function toggleSideBar() {
   const button = document.getElementById("iconHamburguer");
   const sideBar = document.querySelector(".container__sideBar");
-  function toggle() {
-    sideBar.classList.toggle("show");
-  }
   button.addEventListener("click", (event) => {
-    toggle();
+    sideBar.classList.toggle("show");
     event.stopPropagation();
   });
   document.addEventListener("click", (event) => {
