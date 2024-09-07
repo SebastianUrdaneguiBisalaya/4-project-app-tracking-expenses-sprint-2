@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./styles/style.css" />
+    <title>Seguimiento de Gastos</title>
+  </head>
+  <body>
+    <div class="container">
+      <button
+        type="button"
+        id="iconHamburguer"
+        class="container__iconHamburguer"
+      >
+        Open
+      </button>
+      <aside class="container__sideBar toggleSideBar">
+        <div class="container__sideBarContent">
+          <ul>
+            <li>Categoría</li>
+            <li>Fecha de Inicio</li>
+            <li>Fecha de Fin</li>
+          </ul>
+        </div>
+      </aside>
+      <div class="container__menu">
+        <div class="container__menuAddData">Add Data</div>
+        <div class="container__menuTableData">Table Data</div>
+        <div class="container__menuVisualizationData">Visualize Data</div>
+      </div>
+    </div>
+    <script type="module" src="./app/app.js"></script>
+  </body>
+</html>

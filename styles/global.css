@@ -1,0 +1,25 @@
+:root {
+    /* Background */
+    --color-deep-black: #121212;
+    /* Menu Bar */
+    --color-dark-charcoal: #181818;
+    /* Top Gradient */
+    --color-slate-gray: #404040;
+    /* Bottom Gradient */
+    --color-graphite: #282828;
+    /* Primary Text */
+    --color-pure-white: #FFFFFF;
+    /* Secondary Text     */
+    --color-foggy-gray: #B3B3B3;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    background-color: var(--color-deep-black);
+}
