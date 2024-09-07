@@ -5,6 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./styles/style.css" />
     <title>Seguimiento de Gastos</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap"
+      rel="stylesheet"
+    />
   </head>
   <body>
     <div class="container">
@@ -13,21 +19,40 @@
         id="iconHamburguer"
         class="container__iconHamburguer"
       >
-        Open
+        <img src="./assets/iconMenu.svg" alt="Icon Menu" />
       </button>
       <aside class="container__sideBar toggleSideBar">
         <div class="container__sideBarContent">
-          <ul>
-            <li>Categoría</li>
-            <li>Fecha de Inicio</li>
-            <li>Fecha de Fin</li>
-          </ul>
+          <form action="" class="container__filters">
+            <div class="container__inputDate">
+              <label for=""
+                ><span class="custom-calendar-icon">&#128197;</span>Fecha de
+                Inicio</label
+              >
+              <input type="date" aria-label="Fecha de Inicio" />
+            </div>
+            <div class="container__inputDate">
+              <label for=""
+                ><span class="custom-calendar-icon">&#128197;</span> Fecha de
+                Fin</label
+              >
+              <input type="date" aria-label="Fecha de Fin" />
+            </div>
+            <div class="container__button">
+              <button type="submit" class="container__buttonSearch">
+                Buscar
+              </button>
+            </div>
+          </form>
         </div>
       </aside>
       <div class="container__menu">
-        <div class="container__menuAddData">Add Data</div>
-        <div class="container__menuTableData">Table Data</div>
-        <div class="container__menuVisualizationData">Visualize Data</div>
+        <h1>Controla tus Gastos para un Éxito Financiero 🚀📈</h1>
+        <div class="container__menuOptions">
+          <div class="container__menuAddData">Add Data</div>
+          <div class="container__menuTableData">Table Data</div>
+          <div class="container__menuVisualizationData">Visualize Data</div>
+        </div>
       </div>
     </div>
     <script type="module" src="./app/app.js"></script>

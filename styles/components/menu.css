@@ -1,4 +1,15 @@
 .container__menu {
+    background-color: var(--color-dark-charcoal);
+}
+
+.container__menu h1 {
+    text-align: center;
+    color: var(--color-pure-white);
+    margin: 0;
+    padding: 1rem 0
+}
+
+.container__menuOptions {
     height: 100vh;
     background-color: var(--color-dark-charcoal);
     padding: 1rem;
@@ -24,7 +35,7 @@
     grid-area: container3;
 }
 
-.container__menu > div {
+.container__menuOptions > div {
     border: 0.1rem solid var(--color-slate-gray);
     border-radius: 0.8rem;
     padding: 1rem;
@@ -43,7 +54,12 @@
 } */
 
 @media (min-width: 1000px) {
-    .container__menu {
+    .container__menu h1 {
+        margin-left: 16rem;
+        text-align: center;
+    }
+
+    .container__menuOptions {
         padding: 1rem;
         margin-left: 16rem;
         display: grid;
