@@ -15,7 +15,6 @@ export function selectBoxCategoryMenu() {
   btn.addEventListener("focus", function () {
     const categoryLocalStorage = JSON.parse(localStorage.getItem("categories"));
     dataList.innerHTML = "";
-    console.log(categoryLocalStorage);
     categoryLocalStorage.forEach((category) => {
       const option = document.createElement("option");
       option.value = category;

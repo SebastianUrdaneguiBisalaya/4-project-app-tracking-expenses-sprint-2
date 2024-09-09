@@ -1,41 +1,3 @@
-const dataMajor = [
-  {
-    id: "1",
-    date: "2024-07-08",
-    category: "Transporte",
-    description: "Pasaje para la universidad",
-    amount: 5,
-  },
-  {
-    id: "2",
-    date: "2024-07-08",
-    category: "Entretenimiento",
-    description: "Ir al cine",
-    amount: 28,
-  },
-  {
-    id: "3",
-    date: "2024-07-08",
-    category: "Otros",
-    description: "Comprar snacks para las películas",
-    amount: 15,
-  },
-  {
-    id: "4",
-    date: "2024-07-08",
-    category: "Comida",
-    description: "Almuerzo diario",
-    amount: 30,
-  },
-  {
-    id: "1",
-    date: "2024-07-08",
-    category: "Transporte",
-    description: "Pasaje para la universidad",
-    amount: 5,
-  },
-];
-
 export function renderTable(data) {
   const container = document.getElementById("containerTable");
   container.innerHTML = "";
@@ -105,6 +67,9 @@ export function renderTable(data) {
 }
 
 function handleUpdate(index, data) {
+  const tracker = new Tracker();
+  const dataMajor = tracker.loadExpensesFromStorage();
+  console.log("Data Major", dataMajor);
   const selectedItem = data[index];
   document.getElementById("dateExpense").value = selectedItem.dia;
   document.getElementById("categoryExpense").value = selectedItem.categoria;
