@@ -1,5 +1,6 @@
 import toggleSideBar from "./functions/hamburguerIcon.js";
-import { selectBoxCategorySidebar } from "./functions/selectBoxSidebar.js";
+import { selectBoxCategorySideBar } from "./functions/selectBoxSideBar.js";
+import { selectBoxCategoryMenu } from "./functions/selectBoxMenu.js";
 import { renderTable } from "./functions/createTable.js";
 
 const data = [
@@ -42,6 +43,7 @@ const data = [
 
 document.addEventListener("DOMContentLoaded", function () {
   toggleSideBar();
-  selectBoxCategorySidebar();
+  selectBoxCategorySideBar();
+  selectBoxCategoryMenu();
   renderTable(data);
 });
