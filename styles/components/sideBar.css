@@ -11,6 +11,8 @@
 }
 
 .container__sideBar {
+    display: flex;
+    flex-direction: column;
     position: fixed;
     top: 0;
     left: 0;
@@ -26,6 +28,9 @@
 }
 
 .container__sideBarContent {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
     height: 100%;
     padding: 1rem 0.75rem;
     overflow-y: auto;

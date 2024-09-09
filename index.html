@@ -1,60 +1,92 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="./styles/style.css" />
-    <title>Seguimiento de Gastos</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap"
-      rel="stylesheet"
-    />
-  </head>
-  <body>
-    <div class="container">
-      <button
-        type="button"
-        id="iconHamburguer"
-        class="container__iconHamburguer"
-      >
-        <img src="./assets/iconMenu.svg" alt="Icon Menu" />
-      </button>
-      <aside class="container__sideBar toggleSideBar">
-        <div class="container__sideBarContent">
-          <form action="" class="container__filters">
-            <div class="container__inputDate">
-              <label for=""
-                ><span class="custom-calendar-icon">&#128197;</span>Fecha de
-                Inicio</label
-              >
-              <input type="date" aria-label="Fecha de Inicio" />
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="./styles/style.css" />
+  <title>Seguimiento de Gastos</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap"
+    rel="stylesheet" />
+</head>
+
+<body>
+  <div class="container">
+    <button type="button" id="iconHamburguer" class="container__iconHamburguer">
+      <img src="./assets/iconMenu.svg" alt="Icon Menu" />
+    </button>
+    <aside class="container__sideBar toggleSideBar">
+      <div class="container__sideBarContent">
+        <h4 class="container__title">Aplicar Filtros</h4>
+        <form action="" class="container__filters">
+          <div class="container__inputs container__selectBox">
+            <label for="categoryInput"><span class="custom-calendar-icon">✍🏻</span>Categorías</label>
+            <input id="categoryInput" list="categories" aria-label="Categorías" />
+            <datalist id="categories"></datalist>
+          </div>
+          <div class="container__inputs">
+            <label for="dateStart"><span class="custom-calendar-icon">&#128197;</span>Fecha de
+              Inicio</label>
+            <input id="dateStart" type="date" aria-label="Fecha de Inicio" />
+          </div>
+          <div class="container__inputs">
+            <label for="dateDone"><span class="custom-calendar-icon">&#128197;</span> Fecha de
+              Fin</label>
+            <input id="dateDone" type="date" aria-label="Fecha de Fin" />
+          </div>
+          <div class="container__button">
+            <button id="btnFilter" type="submit" class="container__buttonSearch">
+              Buscar
+            </button>
+          </div>
+        </form>
+      </div>
+    </aside>
+    <div class="container__menu">
+      <h1>Controla tus Gastos para un Éxito Financiero 🚀📈</h1>
+      <div class="container__menuOptions">
+        <div class="container__menuAddData">
+          <h4 class="container__title">Ingresar Gastos Financieros 🪙</h4>
+          <div class="container__menuAddInputData">
+            <div class="container__inputs">
+              <label for="dateExpense">Fecha</label>
+              <input id="dateExpense" type="date" aria-label="Día" />
             </div>
-            <div class="container__inputDate">
-              <label for=""
-                ><span class="custom-calendar-icon">&#128197;</span> Fecha de
-                Fin</label
-              >
-              <input type="date" aria-label="Fecha de Fin" />
+            <div class="container__inputs">
+              <label for="categoryExpense">Categoría</label>
+              <input id="categoryExpense" type="text" aria-label="Categoría" />
+            </div>
+            <div class="container__inputs">
+              <label for="descriptionExpense">Descripción</label>
+              <input id="descriptionExpense" type="text" aria-label="Descripción" />
+            </div>
+            <div class="container__inputs">
+              <label for="quantityExpense">Cantidad</label>
+              <input id="quantityExpense" type="text" aria-label="Cantidad" />
             </div>
             <div class="container__button">
-              <button type="submit" class="container__buttonSearch">
-                Buscar
+              <button id="btnAdd" type="submit" class="container__buttonSearch">
+                Agregar
               </button>
             </div>
-          </form>
+          </div>
         </div>
-      </aside>
-      <div class="container__menu">
-        <h1>Controla tus Gastos para un Éxito Financiero 🚀📈</h1>
-        <div class="container__menuOptions">
-          <div class="container__menuAddData">Add Data</div>
-          <div class="container__menuTableData">Table Data</div>
-          <div class="container__menuVisualizationData">Visualize Data</div>
+        <div class="container__menuTableData">
+          <h4 class="container__title">Ver Gastos Financieros 📉</h4>
+          <div id="containerTable" class="container__menuTable"></div>
+        </div>
+        <div class="container__menuVisualizationData">
+          <h4 class="container__title">
+            Visualización de Gastos Financieros 📊
+          </h4>
         </div>
       </div>
     </div>
-    <script type="module" src="./app/app.js"></script>
-  </body>
+  </div>
+  <script type="module" src="./app/app.js"></script>
+</body>
+
 </html>

@@ -1,13 +1,20 @@
+.container__filters {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
 .container__filters input::-webkit-calendar-picker-indicator {
     display: none;
 }
 
-.container__inputDate {
+.container__inputs {
     display: flex;
     flex-direction: column;
+    margin-bottom: 0.5rem;
 }
 
-.container__inputDate input {
+.container__inputs input {
     background: transparent;
     border: 0.1rem solid var(--color-slate-gray);
     border-radius: 0.5rem;
@@ -17,10 +24,10 @@
     cursor: pointer;
 }
 
-.container__inputDate label {
+.container__inputs label {
     color: var(--color-pure-white);
     font-size: 14px;
-    margin: 1rem 0;
+    margin: 0.5rem 0;
 }
 
 .custom-calendar-icon {
@@ -31,7 +38,7 @@
     display: flex;
     justify-content: center;
     align-items: flex-end;
-    margin-top: 2rem;
+    margin-top: auto;
 }
 
 .container__buttonSearch {
@@ -82,13 +89,4 @@
 
 .container__buttonSearch:hover::before {
     opacity: 1;
-}
-
-.container__buttonSearch:active::after {
-    background: transparent;
-}
-
-.container__buttonSearch:active {
-    color: #000;
-    font-weight: bold;
 }

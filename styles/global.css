@@ -21,6 +21,10 @@
 
 body {
     margin: 0;
-    background-color: var(--color-deep-black);
+    background-color: var(--color-dark-charcoal);
     font-family: "Ubuntu", sans-serif;;
+}
+
+.container__title {
+    color: var(--color-pure-white);
 }

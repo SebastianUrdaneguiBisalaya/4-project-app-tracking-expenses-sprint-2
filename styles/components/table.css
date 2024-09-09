@@ -1,0 +1,25 @@
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 1rem;
+    color: var(--color-pure-white);
+    font-size: 0.875rem;
+}
+
+th, td {
+    border: 0.01rem solid var(--color-slate-gray);
+    padding: 0.5rem;
+    text-align: center;
+}
+
+.container__menuTable {
+    max-height: 17rem;
+    overflow-x: auto;
+    overflow-y: auto;
+}
+
+.container__menuTable button {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+}
