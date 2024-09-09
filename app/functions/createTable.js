@@ -1,3 +1,5 @@
+import { Tracker } from "../classes/tracker";
+
 export function renderTable(data) {
   const container = document.getElementById("containerTable");
   container.innerHTML = "";
