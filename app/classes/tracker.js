@@ -93,7 +93,6 @@ export class Tracker {
       const transaction = this.db.transaction(["expenses"], "readwrite");
       const store = transaction.objectStore("expenses");
       const request = store.delete(id);
-      console.log(request);
       request.onsuccess = () => {
         this.loadExpensesFromStorage();
         resolve();
@@ -106,7 +105,6 @@ export class Tracker {
   }
 
   async updateExpense(updatedData) {
-    console.log(updatedData, "updatedaaaaa");
     await this.dbReady;
     if (!this.db) {
       console.error("Base de datos no está inicializada aún.");

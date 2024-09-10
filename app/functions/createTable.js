@@ -71,9 +71,7 @@ export function renderTable(data) {
 
 async function handleUpdate(index) {
   const dataMajor = await fetchData();
-  console.log("Data Major", dataMajor);
   const selectedItem = dataMajor[index];
-  console.log(selectedItem);
   document.getElementById("dateExpense").value = selectedItem.date;
   document.getElementById("categoryExpense").value = selectedItem.category;
   document.getElementById("descriptionExpense").value =
@@ -93,7 +91,6 @@ async function handleUpdate(index) {
 }
 
 async function saveChanges(index) {
-  console.log("index", index);
   const dataMajor = await fetchData();
   const updateItem = {
     id: dataMajor[index].id,
@@ -102,7 +99,6 @@ async function saveChanges(index) {
     description: document.getElementById("descriptionExpense").value.trim(),
     amount: document.getElementById("amountExpense").value.trim(),
   };
-  console.log(updateItem);
   dataMajor[index] = updateItem;
   const tracker = new Tracker();
   const id = updateItem.id;
@@ -114,7 +110,6 @@ async function saveChanges(index) {
 
 async function handleDelete(index) {
   const dataToDelete = await fetchData();
-  console.log(dataToDelete);
   const tracker = new Tracker();
   const id = dataToDelete[index].id;
   tracker.deleteExpense(id).then(() => {
