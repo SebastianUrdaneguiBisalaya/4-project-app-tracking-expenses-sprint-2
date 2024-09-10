@@ -71,6 +71,8 @@
         display: flex;
         flex-direction: column;
         align-items: stretch;
+        gap: 1rem;
+        padding: 1rem;
     }
 
     .container__menuOptions > div {
