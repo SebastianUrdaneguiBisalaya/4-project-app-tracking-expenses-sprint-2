@@ -1,4 +1,5 @@
 import { Expenses } from "./expenses.js";
+import { Category } from "./category.js";
 import { sumByCategory } from "../../utils/sumByCategory.js";
 import { renderTable } from "../functions/createTable.js";
 
@@ -41,6 +42,8 @@ export class Tracker {
       console.error("Base de datos no está inicializada aún.");
       return;
     }
+    const addCategory = new Category();
+    addCategory.addCategory(category);
     const expense = new Expenses(date, category, description, amount);
     const transaction = this.db.transaction(["expenses"], "readwrite");
     const store = transaction.objectStore("expenses");
