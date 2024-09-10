@@ -125,11 +125,22 @@ export class Tracker {
     });
   }
 
-  getTotalExpenses() {
-    return this.expenses.reduce((acc, val) => acc + val.amount, 0);
+  async getTotalExpenses() {
+    const expenses = await this.loadExpensesFromStorage();
+    if (!expenses || expenses.length === 0) {
+      return [];
+    }
+    const total = expenses.reduce(
+      (acc, val) => acc + parseFloat(val.amount),
+      0
+    );
+    console.log(total);
+    return total;
   }
 
-  getExpensesByCategory() {
-    return sumByCategory(this.expenses);
+  async getExpensesByCategory() {
+    const expenses = await this.loadExpensesFromStorage();
+    const result = sumByCategory(expenses);
+    return result;
   }
 }

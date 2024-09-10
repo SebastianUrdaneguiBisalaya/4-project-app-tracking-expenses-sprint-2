@@ -83,8 +83,12 @@ async function handleUpdate(index) {
     e.preventDefault();
     if (addBtn.textContent.trim() === "Update") {
       await saveChanges(index);
-      addBtn.textContent = "Add";
       addBtn.removeEventListener("click", updateHandler);
+      document.getElementById("dateExpense").value = "";
+      document.getElementById("categoryExpense").value = "";
+      document.getElementById("descriptionExpense").value = "";
+      document.getElementById("amountExpense").value = "";
+      addBtn.textContent = "Add";
     }
   };
   addBtn.addEventListener("click", updateHandler);

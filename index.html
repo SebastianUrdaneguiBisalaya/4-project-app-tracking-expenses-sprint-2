@@ -20,26 +20,24 @@
     </button>
     <aside class="container__sideBar toggleSideBar">
       <div class="container__sideBarContent">
-        <h4 class="container__title">Aplicar Filtros</h4>
+        <h4 class="container__title">Apply Filters</h4>
         <form action="" class="container__filters">
           <div class="container__inputs container__selectBox">
-            <label for="categoryInput"><span class="custom-calendar-icon">✍🏻</span>Categorías</label>
+            <label for="categoryInput"><span class="custom-calendar-icon">✍🏻</span>Categories</label>
             <input id="categoryInput" list="categories" aria-label="Categorías" placeholder="Transporte"/>
             <datalist id="categories"></datalist>
           </div>
           <div class="container__inputs">
-            <label for="dateStart"><span class="custom-calendar-icon">&#128197;</span>Fecha de
-              Inicio</label>
+            <label for="dateStart"><span class="custom-calendar-icon">&#128197;</span>Date From</label>
             <input id="dateStart" type="date" aria-label="Fecha de Inicio" />
           </div>
           <div class="container__inputs">
-            <label for="dateDone"><span class="custom-calendar-icon">&#128197;</span> Fecha de
-              Fin</label>
+            <label for="dateDone"><span class="custom-calendar-icon">&#128197;</span> Date Until</label>
             <input id="dateDone" type="date" aria-label="Fecha de Fin" />
           </div>
           <div class="container__button">
             <button id="btnFilter" type="submit" class="container__buttonSearch">
-              Search
+              Filter
             </button>
           </div>
         </form>
@@ -50,20 +48,20 @@
       <div class="container__menuOptions">
         <div class="container__menuAddData">
           <h4 class="container__title">Enter Financial Expenses 🪙</h4>
-          <div class="container__menuAddInputData">
+          <form id="formData" class="container__menuAddInputData">
             <div class="container__inputs">
               <label for="dateExpense">Date</label>
               <input id="dateExpense" type="date" aria-label="Día" />
             </div>
             <div class="container__inputs">
               <label for="categoryExpense">Category</label>
-              <input id="categoryExpense" list="categoriesExpenses" aria-label="Categoría" placeholder="Transporte"/>
+              <input id="categoryExpense" list="categoriesExpenses" aria-label="Categoría" placeholder="Transport"/>
               <datalist id="categoriesExpenses">
               </datalist>
             </div>
             <div class="container__inputs">
               <label for="descriptionExpense">Description</label>
-              <input id="descriptionExpense" type="text" aria-label="Descripción" placeholder="Pasaje para ir a la universidad"/>
+              <input id="descriptionExpense" type="text" aria-label="Descripción" placeholder="Bus ticket to go to the university"/>
             </div>
             <div class="container__inputs">
               <label for="amountExpense">Amount (S/.)</label>
@@ -74,7 +72,7 @@
                 Add
               </button>
             </div>
-          </div>
+          </form>
         </div>
         <div class="container__menuTableData">
           <h4 class="container__title">Table Financial Expenses 📉</h4>
