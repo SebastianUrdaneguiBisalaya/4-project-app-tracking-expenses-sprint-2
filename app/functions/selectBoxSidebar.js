@@ -2,11 +2,11 @@ export function selectBoxCategorySideBar() {
   const categoryLocalStorage = JSON.parse(localStorage.getItem("categories"));
   if (!categoryLocalStorage) {
     const defaultCategories = [
-      "Comida",
-      "Transporte",
-      "Útiles",
-      "Entretenimiento",
-      "Otros",
+      "Food",
+      "Transport",
+      "Utils",
+      "Entertainment",
+      "Others",
     ];
     localStorage.setItem("categories", JSON.stringify(defaultCategories));
   }

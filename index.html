@@ -24,7 +24,7 @@
         <form action="" class="container__filters">
           <div class="container__inputs container__selectBox">
             <label for="categoryInput"><span class="custom-calendar-icon">✍🏻</span>Categories</label>
-            <input id="categoryInput" list="categories" aria-label="Categorías" placeholder="Transporte"/>
+            <input id="categoryInput" list="categories" aria-label="Categorías" placeholder="Transporte" />
             <datalist id="categories"></datalist>
           </div>
           <div class="container__inputs">
@@ -55,17 +55,18 @@
             </div>
             <div class="container__inputs">
               <label for="categoryExpense">Category</label>
-              <input id="categoryExpense" list="categoriesExpenses" aria-label="Categoría" placeholder="Transport"/>
+              <input id="categoryExpense" list="categoriesExpenses" aria-label="Categoría" placeholder="Transport" />
               <datalist id="categoriesExpenses">
               </datalist>
             </div>
             <div class="container__inputs">
               <label for="descriptionExpense">Description</label>
-              <input id="descriptionExpense" type="text" aria-label="Descripción" placeholder="Bus ticket to go to the university"/>
+              <input id="descriptionExpense" type="text" aria-label="Descripción"
+                placeholder="Bus ticket to go to the university" />
             </div>
             <div class="container__inputs">
               <label for="amountExpense">Amount (S/.)</label>
-              <input id="amountExpense" type="number" aria-label="Cantidad" placeholder="3.70"/>
+              <input id="amountExpense" type="number" aria-label="Cantidad" placeholder="3.70" />
             </div>
             <div class="container__button">
               <button id="btnAdd" type="submit" class="container__buttonSearch">
@@ -82,11 +83,13 @@
           <h4 class="container__title">
             Visualization of Financial Expenses 📊
           </h4>
+          <div class="" id="main" style="width: 600px;height:400px;"></div>
         </div>
       </div>
     </div>
   </div>
   <script type="module" src="./app/app.js"></script>
+  
 </body>
 
 </html>
