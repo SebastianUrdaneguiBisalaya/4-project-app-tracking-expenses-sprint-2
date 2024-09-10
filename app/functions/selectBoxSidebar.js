@@ -12,7 +12,8 @@ export function selectBoxCategorySideBar() {
   }
   const btn = document.getElementById("categoryInput");
   const dataList = document.getElementById("categories");
-  btn.addEventListener("focus", function () {
+  btn.addEventListener("focus", function (event) {
+    event.preventDefault();
     const categoryLocalStorage = JSON.parse(localStorage.getItem("categories"));
     dataList.innerHTML = "";
     categoryLocalStorage.forEach((category) => {

@@ -1,4 +1,5 @@
-import { Tracker } from "../classes/tracker";
+import { Tracker } from "../classes/tracker.js";
+import { fetchData } from "../../utils/getExpenses.js";
 
 export function renderTable(data) {
   const container = document.getElementById("containerTable");
@@ -32,7 +33,7 @@ export function renderTable(data) {
     const actionsContainer = document.createElement("div");
     actionsContainer.style.display = "flex";
     actionsContainer.style.flexDirection = "row";
-    actionsContainer.style.gap = "0.5rem";
+    actionsContainer.style.justifyContent = "space-between";
 
     const updateBtn = document.createElement("button");
     updateBtn.textContent = "🔄";
@@ -56,51 +57,68 @@ export function renderTable(data) {
   document.querySelectorAll(".menu__button--update").forEach((button) => {
     button.addEventListener("click", function () {
       const index = event.target.getAttribute("data-index");
-      handleUpdate(index, dataBase);
+      handleUpdate(index);
     });
   });
 
   document.querySelectorAll(".menu__button--delete").forEach((button) => {
     button.addEventListener("click", function () {
       const index = event.target.getAttribute("data-index");
-      handleDelete(index, dataBase);
+      handleDelete(index);
     });
   });
 }
 
-function handleUpdate(index, data) {
-  const tracker = new Tracker();
-  const dataMajor = tracker.loadExpensesFromStorage();
+async function handleUpdate(index) {
+  const dataMajor = await fetchData();
   console.log("Data Major", dataMajor);
-  const selectedItem = data[index];
-  document.getElementById("dateExpense").value = selectedItem.dia;
-  document.getElementById("categoryExpense").value = selectedItem.categoria;
+  const selectedItem = dataMajor[index];
+  console.log(selectedItem);
+  document.getElementById("dateExpense").value = selectedItem.date;
+  document.getElementById("categoryExpense").value = selectedItem.category;
   document.getElementById("descriptionExpense").value =
-    selectedItem.descripcion;
-  document.getElementById("quantityExpense").value = selectedItem.cantidad;
+    selectedItem.description;
+  document.getElementById("amountExpense").value = selectedItem.amount;
   const addBtn = document.getElementById("btnAdd");
-  addBtn.textContent = "Actualizar";
-  addBtn.addEventListener("click", function () {
-    saveChanges(index, dataMajor);
+  addBtn.textContent = "Update";
+  const updateHandler = async function (e) {
+    e.preventDefault();
+    if (addBtn.textContent.trim() === "Update") {
+      await saveChanges(index);
+      addBtn.textContent = "Add";
+      addBtn.removeEventListener("click", updateHandler);
+    }
+  };
+  addBtn.addEventListener("click", updateHandler);
+}
+
+async function saveChanges(index) {
+  console.log("index", index);
+  const dataMajor = await fetchData();
+  const updateItem = {
+    id: dataMajor[index].id,
+    date: document.getElementById("dateExpense").value.trim(),
+    category: document.getElementById("categoryExpense").value.trim(),
+    description: document.getElementById("descriptionExpense").value.trim(),
+    amount: document.getElementById("amountExpense").value.trim(),
+  };
+  console.log(updateItem);
+  dataMajor[index] = updateItem;
+  const tracker = new Tracker();
+  const id = updateItem.id;
+  tracker.updateExpense(updateItem).then(() => {
+    dataMajor[index] = { ...updateItem, id };
+    renderTable(dataMajor);
   });
 }
 
-function saveChanges(index, data) {
-  const updateItem = {
-    id: data[index],
-    dia: document.getElementById("dateExpense").value,
-    categoria: document.getElementById("categoryExpense").value,
-    descripcion: document.getElementById("descriptionExpense").value,
-    cantidad: document.getElementById("quantityExpense").value,
-  };
-  data[index] = updateItem;
-  renderTable(data);
-  const addBtn = document.getElementById("btnAdd");
-  addBtn.textContent = "Agregar";
-  addBtn.addEventListener("click", function () {});
-}
-
-function handleDelete(index, data) {
-  data.splice(index, 1);
-  renderTable(data);
+async function handleDelete(index) {
+  const dataToDelete = await fetchData();
+  console.log(dataToDelete);
+  const tracker = new Tracker();
+  const id = dataToDelete[index].id;
+  tracker.deleteExpense(id).then(() => {
+    dataToDelete.splice(index, 1);
+    renderTable(dataToDelete);
+  });
 }

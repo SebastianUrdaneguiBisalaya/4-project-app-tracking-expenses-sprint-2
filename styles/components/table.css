@@ -8,7 +8,7 @@ table {
 
 th, td {
     border: 0.01rem solid var(--color-slate-gray);
-    padding: 0.5rem;
+    padding: 0.3rem;
     text-align: center;
 }
 

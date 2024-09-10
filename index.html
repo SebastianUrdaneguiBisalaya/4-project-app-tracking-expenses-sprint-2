@@ -5,7 +5,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="./styles/style.css" />
-  <title>Seguimiento de Gastos</title>
+  <title>Expenses Tracking</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
@@ -24,7 +24,7 @@
         <form action="" class="container__filters">
           <div class="container__inputs container__selectBox">
             <label for="categoryInput"><span class="custom-calendar-icon">✍🏻</span>Categorías</label>
-            <input id="categoryInput" list="categories" aria-label="Categorías" />
+            <input id="categoryInput" list="categories" aria-label="Categorías" placeholder="Transporte"/>
             <datalist id="categories"></datalist>
           </div>
           <div class="container__inputs">
@@ -39,50 +39,50 @@
           </div>
           <div class="container__button">
             <button id="btnFilter" type="submit" class="container__buttonSearch">
-              Buscar
+              Search
             </button>
           </div>
         </form>
       </div>
     </aside>
     <div class="container__menu">
-      <h1>Controla tus Gastos para un Éxito Financiero 🚀📈</h1>
+      <h1>Control your Expenses for Financial Success 🚀📈</h1>
       <div class="container__menuOptions">
         <div class="container__menuAddData">
-          <h4 class="container__title">Ingresar Gastos Financieros 🪙</h4>
+          <h4 class="container__title">Enter Financial Expenses 🪙</h4>
           <div class="container__menuAddInputData">
             <div class="container__inputs">
-              <label for="dateExpense">Fecha</label>
+              <label for="dateExpense">Date</label>
               <input id="dateExpense" type="date" aria-label="Día" />
             </div>
             <div class="container__inputs">
-              <label for="categoryExpense">Categoría</label>
-              <input id="categoryExpense" list="categoriesExpenses" aria-label="Categoría" />
+              <label for="categoryExpense">Category</label>
+              <input id="categoryExpense" list="categoriesExpenses" aria-label="Categoría" placeholder="Transporte"/>
               <datalist id="categoriesExpenses">
               </datalist>
             </div>
             <div class="container__inputs">
-              <label for="descriptionExpense">Descripción</label>
-              <input id="descriptionExpense" type="text" aria-label="Descripción" />
+              <label for="descriptionExpense">Description</label>
+              <input id="descriptionExpense" type="text" aria-label="Descripción" placeholder="Pasaje para ir a la universidad"/>
             </div>
             <div class="container__inputs">
-              <label for="amountExpense">Cantidad (S/.)</label>
-              <input id="amountExpense" type="text" aria-label="Cantidad" />
+              <label for="amountExpense">Amount (S/.)</label>
+              <input id="amountExpense" type="number" aria-label="Cantidad" placeholder="3.70"/>
             </div>
             <div class="container__button">
               <button id="btnAdd" type="submit" class="container__buttonSearch">
-                Agregar
+                Add
               </button>
             </div>
           </div>
         </div>
         <div class="container__menuTableData">
-          <h4 class="container__title">Ver Gastos Financieros 📉</h4>
+          <h4 class="container__title">Table Financial Expenses 📉</h4>
           <div id="containerTable" class="container__menuTable"></div>
         </div>
         <div class="container__menuVisualizationData">
           <h4 class="container__title">
-            Visualización de Gastos Financieros 📊
+            Visualization of Financial Expenses 📊
           </h4>
         </div>
       </div>
