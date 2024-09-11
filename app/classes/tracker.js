@@ -143,4 +143,31 @@ export class Tracker {
     const result = sumByCategory(expenses);
     return result;
   }
+
+  async getExpensesByFilterCategory(category){
+    await this.dbReady;
+    if (!this.db) {
+      console.error("Base de datos no está inicializada aún.");
+      return [];
+    }
+    return new Promise((resolve, reject) => {
+      const transaction = this.db.transaction(["expenses"], "readonly");
+      const store = transaction.objectStore("expenses");
+
+      const request = store.getAll();
+
+      request.onsuccess = (event) => {
+        const allExpenses = event.target.result;
+        const filteredExpenses = allExpenses.filter(expense => expense.category === category);
+
+        this.expenses = filteredExpenses;
+        renderTable(this.expenses);
+        resolve(this.expenses);
+    };
+      request.onerror = (event) => {
+          console.error("Error al cargar los datos ", event);
+          reject(event);
+      };
+    });
+  }
 }
