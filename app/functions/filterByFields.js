@@ -1,5 +1,5 @@
 import {    updateChart,
-            renderTotalExpenses } from "./charts.js";
+            renderTotalExpenses } from "./Charts.js";
 import {    expensesChartInstance,
             categoryChartInstance} from "../../utils/getRenderCharts.js"
 import { Tracker } from "../classes/tracker.js";
