@@ -1,5 +1,6 @@
 import { Tracker } from "../classes/tracker.js";
 import { fetchData } from "../../utils/getExpenses.js";
+import { updateAndRenderCharts } from "../../utils/getRenderCharts.js";
 
 export function renderTable(data) {
   const container = document.getElementById("containerTable");
@@ -106,10 +107,11 @@ async function saveChanges(index) {
   dataMajor[index] = updateItem;
   const tracker = new Tracker();
   const id = updateItem.id;
-  tracker.updateExpense(updateItem).then(() => {
+  await tracker.updateExpense(updateItem).then(() => {
     dataMajor[index] = { ...updateItem, id };
     renderTable(dataMajor);
   });
+  await updateAndRenderCharts();
 }
 
 async function handleDelete(index) {
@@ -120,4 +122,5 @@ async function handleDelete(index) {
     dataToDelete.splice(index, 1);
     renderTable(dataToDelete);
   });
+  await updateAndRenderCharts();
 }

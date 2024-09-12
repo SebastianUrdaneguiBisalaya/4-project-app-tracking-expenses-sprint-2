@@ -1,7 +1,8 @@
 import { Expenses } from "./expenses.js";
 import { Category } from "./category.js";
+import { sumByDate } from "../../utils/sumByDate.js";
 import { sumByCategory } from "../../utils/sumByCategory.js";
-// import { renderTable } from "../functions/createTable.js";
+import { renderTable } from "../functions/createTable.js";
 
 export class Tracker {
   constructor() {
@@ -74,7 +75,7 @@ export class Tracker {
       request.onsuccess = (event) => {
         this.expenses = event.target.result;
         resolve(this.expenses);
-        // renderTable(this.expenses);
+        renderTable(this.expenses);
       };
       request.onerror = (event) => {
         console.error("Error al cargar los datos ", event);
@@ -137,10 +138,41 @@ export class Tracker {
     return total;
   }
 
+
+  /**
+   *
+   * @returns {{dates: string[], amounts_dates: string[]}}
+   */
+  async getExpensesByDate() {
+    const all_expenses = await this.loadExpensesFromStorage();
+    const sum_expenses = sumByDate(all_expenses);
+
+    const entries = Object.entries(sum_expenses).sort(
+      (a, b) => new Date(a[0]) - new Date(b[0])
+    );
+
+    const dates = entries.map((entry) => String(entry[0]));
+    const amounts_dates = entries.map((entry) => String(entry[1]));
+
+    return { dates, amounts_dates };
+  }
+
+  /**
+   *
+   * @returns {{categories: string[], amounts_categories: string[]}}
+   */
   async getExpensesByCategory() {
-    const expenses = await this.loadExpensesFromStorage();
-    const result = sumByCategory(expenses);
-    return result;
+    const all_expenses = await this.loadExpensesFromStorage();
+    const sum_expenses = sumByCategory(all_expenses);
+
+    const entries = Object.entries(sum_expenses).sort(
+      (a, b) => new Date(a[0]) - new Date(b[0])
+    );
+
+    const categories = entries.map((entry) => String(entry[0]));
+    const amounts_categories = entries.map((entry) => String(entry[1]));
+
+    return { categories, amounts_categories };
   }
 
   async getExpensesByFilter({ category = '', dateStart = '', dateEnd = '' }) {
@@ -169,9 +201,31 @@ export class Tracker {
                 filteredExpenses = filteredExpenses.filter(expense => expense.date <= dateEnd);
             }
 
+            const totalExpenses = filteredExpenses.reduce((sum, expense) => sum + expense.amount, 0);
+            const dates = [...new Set(filteredExpenses.map(expense => expense.date))].sort();
+            const amounts_dates = dates.map(date => 
+              filteredExpenses
+                  .filter(expense => expense.date === date)
+                  .reduce((sum, expense) => sum + expense.amount, 0)
+            );
+
+            const categories = [...new Set(filteredExpenses.map(expense => expense.category))];
+            const amounts_categories = categories.map(category => 
+                filteredExpenses
+                    .filter(expense => expense.category === category)
+                    .reduce((sum, expense) => sum + expense.amount, 0)
+            );
+
             this.expenses = filteredExpenses;
             renderTable(this.expenses);
-            resolve(this.expenses);
+            //resolve(this.expenses);
+            resolve({
+              dates,
+              amounts_dates,
+              categories,
+              amounts_categories,
+              totalExpenses
+            });
         };
         request.onerror = (event) => {
             console.error("Error al cargar los datos ", event);

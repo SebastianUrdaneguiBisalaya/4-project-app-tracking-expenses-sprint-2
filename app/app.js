@@ -3,7 +3,8 @@ import { selectBoxCategorySideBar } from "./functions/selectBoxSideBar.js";
 import { selectBoxCategoryMenu } from "./functions/selectBoxMenu.js";
 import { addDataToLocalStorage } from "./functions/addData.js";
 import { fetchAndRenderTable } from "../utils/getRenderExpenses.js";
-import { createBarChart } from "./functions/plots.js";
+//import { createBarChart } from "./functions/plots.js";
+import { fetchAndRenderCharts } from "../utils/getRenderCharts.js";
 import { getFilteredData } from "./functions/filterByFields.js";
 
 const addEventListenerWithPassive = EventTarget.prototype.addEventListener;
@@ -27,6 +28,7 @@ document.addEventListener("DOMContentLoaded", function () {
   selectBoxCategoryMenu();
   addDataToLocalStorage();
   fetchAndRenderTable();
-  createBarChart();
+  //createBarChart();  
+  fetchAndRenderCharts();
   getFilteredData();
 });

@@ -1,4 +1,7 @@
-import { Expenses } from "../classes/expenses.js";
+import {    updateChart,
+            renderTotalExpenses } from "./charts.js";
+import {    expensesChartInstance,
+            categoryChartInstance} from "../../utils/getRenderCharts.js"
 import { Tracker } from "../classes/tracker.js";
 import { Category } from "../classes/category.js";
 
@@ -36,6 +39,16 @@ export function getFilteredData() {
             category,
             dateStart,
             dateEnd
-        }).then((data) => console.log(data));
+        }).then(({ dates, amounts_dates, categories, amounts_categories, totalExpenses }) => {
+            renderTotalExpenses(totalExpenses);
+            if (expensesChartInstance && categoryChartInstance) {
+                updateChart(expensesChartInstance, dates, amounts_dates);
+                updateChart(categoryChartInstance, categories, amounts_categories);
+            } else {
+                console.error("Charts are not initialized. Run fetchAndRenderCharts first.");
+            }
+        }).catch(error => {
+            console.error("Error al obtener los datos filtrados: ", error);
+        });
       });
 }

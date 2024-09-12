@@ -2,94 +2,97 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="./styles/style.css" />
-  <title>Expenses Tracking</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap"
-    rel="stylesheet" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./styles/style.css" />
+    <title>Expenses Tracking</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet" />
 </head>
 
 <body>
-  <div class="container">
-    <button type="button" id="iconHamburguer" class="container__iconHamburguer">
+    <div class="container">
+        <button type="button" id="iconHamburguer" class="container__iconHamburguer">
       <img src="./assets/iconMenu.svg" alt="Icon Menu" />
     </button>
-    <aside class="container__sideBar toggleSideBar">
-      <div class="container__sideBarContent">
-        <h4 class="container__title">Apply Filters</h4>
-        <form id="filterForm" action="" class="container__filters">
-          <div class="container__inputs container__selectBox">
-            <label for="categoryInput"><span class="custom-calendar-icon">✍🏻</span>Categories</label>
-            <input id="categoryInput" list="categories" aria-label="Categorías" placeholder="Transporte" />
-            <datalist id="categories"></datalist>
-          </div>
-          <div class="container__inputs">
-            <label for="dateStart"><span class="custom-calendar-icon">&#128197;</span>Date From</label>
-            <input id="dateStart" type="date" aria-label="Fecha de Inicio" />
-          </div>
-          <div class="container__inputs">
-            <label for="dateDone"><span class="custom-calendar-icon">&#128197;</span> Date Until</label>
-            <input id="dateDone" type="date" aria-label="Fecha de Fin" />
-          </div>
-          <div class="container__button">
-            <button id="btnFilter" type="submit" class="container__buttonSearch">
-              Filter
-            </button>
-          </div>
-        </form>
-      </div>
-    </aside>
-    <div class="container__menu">
-      <h1>Control your Expenses for Financial Success 🚀📈</h1>
-      <div class="container__menuOptions">
-        <div class="container__menuAddData">
-          <h4 class="container__title">Enter Financial Expenses 🪙</h4>
-          <form id="formData" class="container__menuAddInputData">
-            <div class="container__inputs">
-              <label for="dateExpense">Date</label>
-              <input id="dateExpense" type="date" aria-label="Día" />
+        <aside class="container__sideBar toggleSideBar">
+            <div class="container__sideBarContent">
+                <h4 class="container__title">Apply Filters</h4>
+                <form id="filterForm" action="" class="container__filters">
+                    <div class="container__inputs container__selectBox">
+                        <label for="categoryInput"><span class="custom-calendar-icon">✍🏻</span>Categories</label>
+                        <input id="categoryInput" list="categories" aria-label="Categorías" placeholder="Transporte" />
+                        <datalist id="categories"></datalist>
+                    </div>
+                    <div class="container__inputs">
+                        <label for="dateStart"><span class="custom-calendar-icon">&#128197;</span>Date From</label>
+                        <input id="dateStart" type="date" aria-label="Fecha de Inicio" />
+                    </div>
+                    <div class="container__inputs">
+                        <label for="dateDone"><span class="custom-calendar-icon">&#128197;</span> Date Until</label>
+                        <input id="dateDone" type="date" aria-label="Fecha de Fin" />
+                    </div>
+                    <div class="container__button">
+                        <button id="btnFilter" type="submit" class="container__buttonSearch">
+                        Filter
+                        </button>
+                    </div>
+                </form>
             </div>
-            <div class="container__inputs">
-              <label for="categoryExpense">Category</label>
-              <input id="categoryExpense" list="categoriesExpenses" aria-label="Categoría" placeholder="Transport" />
-              <datalist id="categoriesExpenses">
-              </datalist>
-            </div>
-            <div class="container__inputs">
-              <label for="descriptionExpense">Description</label>
-              <input id="descriptionExpense" type="text" aria-label="Descripción"
-                placeholder="Bus ticket to go to the university" />
-            </div>
-            <div class="container__inputs">
-              <label for="amountExpense">Amount (S/.)</label>
-              <input id="amountExpense" type="number" aria-label="Cantidad" placeholder="3.70" />
-            </div>
-            <div class="container__button">
-              <button id="btnAdd" type="submit" class="container__buttonSearch">
+        </aside>
+        <div class="container__menu">
+            <h1>Control your Expenses for Financial Success 🚀📈</h1>
+            <div class="container__menuOptions">
+                <div class="container__menuAddData">
+                    <h4 class="container__title">Enter Financial Expenses 🪙</h4>
+                    <form id="formData" class="container__menuAddInputData">
+                        <div class="container__inputs">
+                            <label for="dateExpense">Date</label>
+                            <input id="dateExpense" type="date" aria-label="Día" />
+                        </div>
+                        <div class="container__inputs">
+                            <label for="categoryExpense">Category</label>
+                            <input id="categoryExpense" list="categoriesExpenses" aria-label="Categoría" placeholder="Transport" />
+                            <datalist id="categoriesExpenses">
+                            </datalist>
+                        </div>
+                        <div class="container__inputs">
+                            <label for="descriptionExpense">Description</label>
+                            <input id="descriptionExpense" type="text" aria-label="Descripción" placeholder="Bus ticket to go to the university" />
+                        </div>
+                        <div class="container__inputs">
+                            <label for="amountExpense">Amount (S/.)</label>
+                            <input id="amountExpense" type="number" aria-label="Cantidad" placeholder="3.70" />
+                        </div>
+                        <div class="container__button">
+                            <button id="btnAdd" type="submit" class="container__buttonSearch">
                 Add
               </button>
+                        </div>
+                    </form>
+                </div>
+                <div class="container__menuTableData">
+                    <h4 class="container__title">Table Financial Expenses 📉</h4>
+                    <div id="containerTable" class="container__menuTable"></div>
+                </div>
+                <div class="container__menuVisualizationData">
+                    <div class="container__menuCard">
+                        <h4 class="container__title">
+                            Visualization of Financial Expenses 📊
+                        </h4>
+                        <h4 id="expensesTotal" class="container__menuTotalExpenses">3.45</h4>
+                    </div>
+                    <div id="main">
+                        <canvas id="expensesChart" class="container__menuChart"></canvas>
+                        <canvas id="categoryExpensesChart" class="container__menuChart"></canvas>
+                    </div>
+                </div>
             </div>
-          </form>
         </div>
-        <div class="container__menuTableData">
-          <h4 class="container__title">Table Financial Expenses 📉</h4>
-          <div id="containerTable" class="container__menuTable"></div>
-        </div>
-        <div class="container__menuVisualizationData">
-          <h4 class="container__title">
-            Visualization of Financial Expenses 📊
-          </h4>
-          <div class="plots" id="mainPlot"></div>
-        </div>
-      </div>
     </div>
-  </div>
-  <script type="module" src="./app/app.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/echarts@5.5.1/dist/echarts.min.js"></script>
+    <script type="module" src="./app/app.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </body>
 
 </html>
