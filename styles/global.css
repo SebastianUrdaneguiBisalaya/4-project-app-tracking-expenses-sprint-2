@@ -22,7 +22,7 @@
 body {
     margin: 0;
     background-color: var(--color-dark-charcoal);
-    font-family: "Ubuntu", sans-serif;;
+    font-family: "Ubuntu", sans-serif;
 }
 
 .container__title {
