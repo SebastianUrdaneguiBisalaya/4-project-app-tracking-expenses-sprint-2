@@ -2,7 +2,7 @@ import { Expenses } from "./expenses.js";
 import { Category } from "./category.js";
 import { sumByDate } from "../../utils/sumByDate.js";
 import { sumByCategory } from "../../utils/sumByCategory.js";
-// import { renderTable } from "../functions/createTable.js";
+import { renderTable } from "../functions/createTable.js";
 
 export class Tracker {
   constructor() {
@@ -76,7 +76,7 @@ export class Tracker {
       request.onsuccess = (event) => {
         this.expenses = event.target.result;
         resolve(this.expenses);
-        // renderTable(this.expenses);
+        renderTable(this.expenses);
       };
       request.onerror = (event) => {
         console.error("Error al cargar los datos ", event);

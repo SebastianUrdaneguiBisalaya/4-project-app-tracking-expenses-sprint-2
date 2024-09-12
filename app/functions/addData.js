@@ -24,10 +24,6 @@ export function addDataToLocalStorage() {
     categoryManager.addCategory(category);
     tracker.addExpense(date, category, description, amount);
     updateAndRenderCharts();
-    // document.getElementById("dateExpense").value = "";
-    // document.getElementById("categoryExpense").value = "";
-    // document.getElementById("descriptionExpense").value = "";
-    // document.getElementById("amountExpense").value = "";
     btnAdd.reset();
   });
 }
