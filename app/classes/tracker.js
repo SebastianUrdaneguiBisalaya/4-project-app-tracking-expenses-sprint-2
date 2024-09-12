@@ -174,4 +174,64 @@ export class Tracker {
 
     return { categories, amounts_categories };
   }
+
+  async getExpensesByFilter({ category = '', dateStart = '', dateEnd = '' }) {
+    await this.dbReady;
+    if (!this.db) {
+        console.error("Base de datos no está inicializada aún.");
+        return [];
+    }
+    return new Promise((resolve, reject) => {
+        const transaction = this.db.transaction(["expenses"], "readonly");
+        const store = transaction.objectStore("expenses");
+
+        const request = store.getAll();
+
+        request.onsuccess = (event) => {
+            const allExpenses = event.target.result;
+
+            // Filtrar por categoría
+            let filteredExpenses = allExpenses.filter(expense => category === '' || expense.category === category);
+
+            // Filtrar por fechas
+            if (dateStart) {
+              filteredExpenses = filteredExpenses.filter(expense => expense.date >= dateStart);
+            }
+            if (dateEnd) {
+                filteredExpenses = filteredExpenses.filter(expense => expense.date <= dateEnd);
+            }
+
+            const totalExpenses = filteredExpenses.reduce((sum, expense) => sum + expense.amount, 0);
+            const dates = [...new Set(filteredExpenses.map(expense => expense.date))].sort();
+            const amounts_dates = dates.map(date => 
+              filteredExpenses
+                  .filter(expense => expense.date === date)
+                  .reduce((sum, expense) => sum + expense.amount, 0)
+            );
+
+            const categories = [...new Set(filteredExpenses.map(expense => expense.category))];
+            const amounts_categories = categories.map(category => 
+                filteredExpenses
+                    .filter(expense => expense.category === category)
+                    .reduce((sum, expense) => sum + expense.amount, 0)
+            );
+
+            this.expenses = filteredExpenses;
+            renderTable(this.expenses);
+            //resolve(this.expenses);
+            resolve({
+              dates,
+              amounts_dates,
+              categories,
+              amounts_categories,
+              totalExpenses
+            });
+        };
+        request.onerror = (event) => {
+            console.error("Error al cargar los datos ", event);
+            reject(event);
+        };
+    });
+  }
+
 }

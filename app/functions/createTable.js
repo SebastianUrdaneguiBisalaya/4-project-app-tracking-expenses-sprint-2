@@ -124,3 +124,4 @@ async function handleDelete(index) {
   });
   await updateAndRenderCharts();
 }
+
