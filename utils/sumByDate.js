@@ -1,4 +1,3 @@
-
 export function sumByDate(data) {
     return data.reduce((acc, val) => {
       if (!acc[val.date]) {
@@ -8,4 +7,3 @@ export function sumByDate(data) {
       return acc;
     }, {});
   }
-  

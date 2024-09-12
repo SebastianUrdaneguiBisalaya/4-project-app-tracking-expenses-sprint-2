@@ -12,6 +12,7 @@ export class Tracker {
     this.db = null;
     this.dbReady = this.initIndexedDB();
   }
+
   initIndexedDB() {
     return new Promise((resolve, reject) => {
       const request = indexedDB.open(this.databaseName, this.databaseVersion);
@@ -137,7 +138,6 @@ export class Tracker {
     );
     return total;
   }
-
 
   /**
    *

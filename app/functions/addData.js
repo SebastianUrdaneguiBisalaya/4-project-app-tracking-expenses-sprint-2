@@ -1,6 +1,6 @@
 import { Tracker } from "../classes/tracker.js";
 import { Category } from "../classes/category.js";
-// import { createBarChart } from "./plots.js";
+import { updateAndRenderCharts } from "../../utils/getRenderCharts.js";
 
 export function addDataToLocalStorage() {
   const tracker = new Tracker();
@@ -23,11 +23,7 @@ export function addDataToLocalStorage() {
     }
     categoryManager.addCategory(category);
     tracker.addExpense(date, category, description, amount);
-    // const dataToPlot = await tracker
-    //   .getExpensesByCategory()
-    //   .then((data) => data);
-    // const dataToPlotTransform = [dataToPlot];
-    // createBarChart(dataToPlotTransform);
+    updateAndRenderCharts();
     btnAdd.reset();
   });
 }

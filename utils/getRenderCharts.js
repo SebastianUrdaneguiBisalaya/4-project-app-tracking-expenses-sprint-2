@@ -4,7 +4,7 @@ import {
   createCategoryExpensesChart,
   updateChart,
   renderTotalExpenses,
-} from "../app/functions/charts.js";
+} from "../app/functions/Charts.js";
 
 let expensesChartInstance;
 let categoryChartInstance;
@@ -39,4 +39,5 @@ export async function updateAndRenderCharts() {
     );
   }
 }
+
 export { expensesChartInstance, categoryChartInstance };

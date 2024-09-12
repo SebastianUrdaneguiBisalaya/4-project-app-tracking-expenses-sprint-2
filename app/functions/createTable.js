@@ -118,9 +118,10 @@ async function handleDelete(index) {
   const dataToDelete = await fetchData();
   const tracker = new Tracker();
   const id = dataToDelete[index].id;
-  tracker.deleteExpense(id).then(() => {
+  await tracker.deleteExpense(id).then(() => {
     dataToDelete.splice(index, 1);
     renderTable(dataToDelete);
   });
   await updateAndRenderCharts();
 }
+
