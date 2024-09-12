@@ -1,5 +1,6 @@
 import { Expenses } from "./expenses.js";
 import { Category } from "./category.js";
+import { sumByDate } from "../../utils/sumByDate.js";
 import { sumByCategory } from "../../utils/sumByCategory.js";
 // import { renderTable } from "../functions/createTable.js";
 
@@ -11,6 +12,7 @@ export class Tracker {
     this.db = null;
     this.dbReady = this.initIndexedDB();
   }
+
   initIndexedDB() {
     return new Promise((resolve, reject) => {
       const request = indexedDB.open(this.databaseName, this.databaseVersion);
@@ -137,9 +139,39 @@ export class Tracker {
     return total;
   }
 
+  /**
+   *
+   * @returns {{dates: string[], amounts_dates: string[]}}
+   */
+  async getExpensesByDate() {
+    const all_expenses = await this.loadExpensesFromStorage();
+    const sum_expenses = sumByDate(all_expenses);
+
+    const entries = Object.entries(sum_expenses).sort(
+      (a, b) => new Date(a[0]) - new Date(b[0])
+    );
+
+    const dates = entries.map((entry) => String(entry[0]));
+    const amounts_dates = entries.map((entry) => String(entry[1]));
+
+    return { dates, amounts_dates };
+  }
+
+  /**
+   *
+   * @returns {{categories: string[], amounts_categories: string[]}}
+   */
   async getExpensesByCategory() {
-    const expenses = await this.loadExpensesFromStorage();
-    const result = sumByCategory(expenses);
-    return result;
+    const all_expenses = await this.loadExpensesFromStorage();
+    const sum_expenses = sumByCategory(all_expenses);
+
+    const entries = Object.entries(sum_expenses).sort(
+      (a, b) => new Date(a[0]) - new Date(b[0])
+    );
+
+    const categories = entries.map((entry) => String(entry[0]));
+    const amounts_categories = entries.map((entry) => String(entry[1]));
+
+    return { categories, amounts_categories };
   }
 }
