@@ -1,11 +1,12 @@
 import { Tracker } from "../classes/tracker.js";
 import { Category } from "../classes/category.js";
+// import { createBarChart } from "./plots.js";
 
 export function addDataToLocalStorage() {
   const tracker = new Tracker();
   const categoryManager = new Category();
   const btnAdd = document.getElementById("formData");
-  btnAdd.addEventListener("submit", function (event) {
+  btnAdd.addEventListener("submit", async function (event) {
     event.preventDefault();
 
     const date = document.getElementById("dateExpense").value.trim();
@@ -22,10 +23,11 @@ export function addDataToLocalStorage() {
     }
     categoryManager.addCategory(category);
     tracker.addExpense(date, category, description, amount);
-    // document.getElementById("dateExpense").value = "";
-    // document.getElementById("categoryExpense").value = "";
-    // document.getElementById("descriptionExpense").value = "";
-    // document.getElementById("amountExpense").value = "";
+    // const dataToPlot = await tracker
+    //   .getExpensesByCategory()
+    //   .then((data) => data);
+    // const dataToPlotTransform = [dataToPlot];
+    // createBarChart(dataToPlotTransform);
     btnAdd.reset();
   });
 }
