@@ -144,30 +144,41 @@ export class Tracker {
     return result;
   }
 
-  async getExpensesByFilterCategory(category){
+  async getExpensesByFilter({ category = '', dateStart = '', dateEnd = '' }) {
     await this.dbReady;
     if (!this.db) {
-      console.error("Base de datos no está inicializada aún.");
-      return [];
+        console.error("Base de datos no está inicializada aún.");
+        return [];
     }
     return new Promise((resolve, reject) => {
-      const transaction = this.db.transaction(["expenses"], "readonly");
-      const store = transaction.objectStore("expenses");
+        const transaction = this.db.transaction(["expenses"], "readonly");
+        const store = transaction.objectStore("expenses");
 
-      const request = store.getAll();
+        const request = store.getAll();
 
-      request.onsuccess = (event) => {
-        const allExpenses = event.target.result;
-        const filteredExpenses = allExpenses.filter(expense => expense.category === category);
+        request.onsuccess = (event) => {
+            const allExpenses = event.target.result;
 
-        this.expenses = filteredExpenses;
-        renderTable(this.expenses);
-        resolve(this.expenses);
-    };
-      request.onerror = (event) => {
-          console.error("Error al cargar los datos ", event);
-          reject(event);
-      };
+            // Filtrar por categoría
+            let filteredExpenses = allExpenses.filter(expense => category === '' || expense.category === category);
+
+            // Filtrar por fechas
+            if (dateStart) {
+              filteredExpenses = filteredExpenses.filter(expense => expense.date >= dateStart);
+            }
+            if (dateEnd) {
+                filteredExpenses = filteredExpenses.filter(expense => expense.date <= dateEnd);
+            }
+
+            this.expenses = filteredExpenses;
+            renderTable(this.expenses);
+            resolve(this.expenses);
+        };
+        request.onerror = (event) => {
+            console.error("Error al cargar los datos ", event);
+            reject(event);
+        };
     });
   }
+
 }
