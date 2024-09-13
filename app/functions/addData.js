@@ -1,6 +1,7 @@
 import { Tracker } from "../classes/tracker.js";
 import { Category } from "../classes/category.js";
 import { updateAndRenderCharts } from "../../utils/getRenderCharts.js";
+import { showTodayDate } from "../../utils/showTodayDate.js";
 
 export function addDataToLocalStorage() {
   const tracker = new Tracker();
@@ -25,5 +26,6 @@ export function addDataToLocalStorage() {
     tracker.addExpense(date, category, description, amount);
     updateAndRenderCharts();
     btnAdd.reset();
+    showTodayDate();
   });
 }

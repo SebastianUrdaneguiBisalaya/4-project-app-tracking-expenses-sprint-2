@@ -127,5 +127,9 @@ export function updateChart(chart, newLabels, newData) {
 
 export function renderTotalExpenses(totalExpenses) {
   const expensesTotalElement = document.getElementById("expensesTotal");
-  expensesTotalElement.innerText = "S/. " + totalExpenses.toFixed(2);
+  if (totalExpenses.length === 0) {
+    expensesTotalElement.innerText = "S/. 0.00";
+  } else {
+    expensesTotalElement.innerText = "S/. " + totalExpenses?.toFixed(2);
+  }
 }
