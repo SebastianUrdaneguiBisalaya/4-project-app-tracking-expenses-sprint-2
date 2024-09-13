@@ -2,6 +2,8 @@
 
 [Link to the Scrum project](https://sebasurdanegui.atlassian.net/jira/software/projects/ATE/boards/34/backlog)
 
+[Link to the Deploy App](https://tracking-expenses-app.vercel.app/)
+
 ## Requirements Met and Bonus Features
 ✅ <u>**Implement the app using JavaScript classes**</u>: **Expense**, **Category** and **Tracker**. Each expense have the following attributes: date (automatically assigned or manually entered), category (selected from predefined categories or custom), description and amount.
 
