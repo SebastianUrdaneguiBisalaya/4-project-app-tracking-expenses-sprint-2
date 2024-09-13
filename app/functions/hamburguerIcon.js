@@ -1,4 +1,4 @@
-export default function toggleSideBar() {
+export function toggleSideBar() {
   const button = document.getElementById("iconHamburguer");
   const sideBar = document.querySelector(".container__sideBar");
   button.addEventListener("click", (event) => {
